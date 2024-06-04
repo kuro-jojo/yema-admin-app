@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/addHouseFragment"
+        android:name="com.kuro.yemaadmin.views.fragments.houses.AddHouseFragment"
+        android:label="fragment_add_house"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"
+        tools:layout="@layout/fragment_add_house">
+        <action
+            android:id="@+id/action_addHouseFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_addHouseFragment_to_houseReviewFragment"
+            app:destination="@id/houseReviewFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_addHouseFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="house"
+            android:defaultValue="@null"
+            app:argType="com.kuro.yemaadmin.data.model.House"
+            app:nullable="true" />
+        <argument
+            android:name="listOfImages"
+            android:defaultValue="@null"
+            app:argType="android.net.Uri[]"
+            app:nullable="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/processingFragment"
+        android:name="com.kuro.yemaadmin.views.fragments.houses.ProcessingHouseCreationFragment"
+        android:label="fragment_processing"
+        tools:layout="@layout/fragment_processing">
+        <action
+            android:id="@+id/action_processingFragment_to_addHouseFragment"
+            app:destination="@id/addHouseFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/addHouseFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="house"
+            app:argType="com.kuro.yemaadmin.data.model.House" />
+        <argument
+            android:name="listOfImages"
+            app:argType="android.net.Uri[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/houseReviewFragment"
+        android:name="com.kuro.yemaadmin.views.fragments.houses.HouseCreationReviewFragment"
+        android:label="fragment_house_review"
+        tools:layout="@layout/fragment_house_review">
+        <action
+            android:id="@+id/action_houseReviewFragment_to_processingFragment"
+            app:destination="@id/processingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_houseReviewFragment_to_addHouseFragment"
+            app:destination="@id/addHouseFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="house"
+            app:argType="com.kuro.yemaadmin.data.model.House" />
+        <argument
+            android:name="listOfImages"
+            app:argType="android.net.Uri[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.kuro.yemaadmin.views.fragments.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_addHouseFragment"
+            app:destination="@id/addHouseFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_houseDetailsFragment"
+            app:destination="@id/houseDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/houseDetailsFragment"
+        android:name="com.kuro.yemaadmin.views.fragments.home.HouseDetailsFragment"
+        android:label="fragment_house_details"
+        tools:layout="@layout/fragment_house_details">
+        <argument
+            android:name="houseId"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_houseDetailsFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_houseDetailsFragment_to_addHouseFragment"
+            app:destination="@id/addHouseFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/addHouseFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_houseDetailsFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/profileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.kuro.yemaadmin.views.fragments.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_profileFragment_to_addHouseFragment"
+            app:destination="@id/addHouseFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/addHouseFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.fragments.houses.AddHouseFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/add_a_new_house"
+                android:textAppearance="@style/title"
+                app:layout_constraintEnd_toEndOf="@id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/guideline" />
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/title"
+                android:textAppearance="@style/edit_title"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/title" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/title_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/title_text"
+                app:placeholderText="Enter the title of the house">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/title_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/location_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/location"
+                android:textAppearance="@style/edit_title"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/title_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/location_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/location_text"
+                app:placeholderText="Enter the location of the house">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/address_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/price_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/price"
+                android:textAppearance="@style/edit_title"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/location_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/price_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/price_text"
+                app:placeholderText="100 000 CFA">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/price_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/listing_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/listing_type"
+                android:textAppearance="@style/edit_title"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/price_layout" />
+
+            <Spinner
+                android:id="@+id/listing_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/listing_text"
+                tools:layout_editor_absoluteY="340dp" />
+
+            <TextView
+                android:id="@+id/house_type_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/house_type"
+                android:textAppearance="@style/edit_title"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/listing_spinner" />
+
+            <Spinner
+                android:id="@+id/house_type_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/house_type_text"
+                tools:layout_editor_absoluteY="340dp" />
+
+            <TextView
+                android:id="@+id/rental_term_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/rental_term"
+                android:textAppearance="@style/edit_title"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/house_type_spinner" />
+
+            <Spinner
+                android:id="@+id/rental_term_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/rental_term_text"
+                tools:layout_editor_absoluteY="340dp" />
+
+            <TextView
+                android:id="@+id/nb_bedrooms_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/number_of_bedrooms"
+                android:textAppearance="@style/edit_title"
+                app:layout_constraintEnd_toStartOf="@+id/nb_bedrooms_layout"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/rental_term_spinner" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nb_bedrooms_layout"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="60dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintTop_toBottomOf="@id/rental_term_spinner"
+                app:placeholderText="0">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nb_bedrooms_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+                    android:maxLength="2" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/nb_bathrooms_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="@string/number_of_bathrooms"
+                android:textAppearance="@style/edit_title"
+                app:layout_constraintEnd_toStartOf="@+id/nb_bathrooms_layout"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/nb_bedrooms_text" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nb_bathrooms_layout"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="60dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintTop_toBottomOf="@id/nb_bedrooms_text"
+                app:placeholderText="0">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nb_bathrooms_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+                    android:maxLength="2" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/nb_parking_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="@string/number_of_parking_spots"
+                android:textAppearance="@style/edit_title"
+                app:layout_constraintEnd_toStartOf="@+id/nb_parking_layout"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/nb_bathrooms_text" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nb_parking_layout"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="60dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintTop_toBottomOf="@id/nb_bathrooms_text"
+                app:placeholderText="0">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nb_parking_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+                    android:maxLength="2" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/living_area_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="@string/living_area"
+                android:textAppearance="@style/edit_title"
+                app:layout_constraintEnd_toStartOf="@+id/living_area_layout"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/nb_parking_text" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/living_area_layout"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="60dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintTop_toBottomOf="@id/nb_parking_text"
+                app:placeholderText="10">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/living_area_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/description_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/description"
+                android:textAppearance="@style/edit_title"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/living_area_text" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/description_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/generate_description"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/description_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/description_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:maxLines="10" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/generate_description"
+                android:layout_width="@dimen/default_logo_size_40"
+                android:layout_height="@dimen/default_logo_size_40"
+                android:layout_marginTop="25dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/generate"
+                app:layout_constraintEnd_toEndOf="@id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/description_layout"
+                app:layout_constraintTop_toBottomOf="@id/description_text" />
+
+            <ImageButton
+                android:id="@+id/clear_description"
+                android:layout_width="@dimen/default_logo_size_40"
+                android:layout_height="@dimen/default_logo_size_40"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/clear"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/guideline_v2"
+                app:layout_constraintTop_toBottomOf="@id/generate_description" />
+
+            <TextView
+                android:id="@+id/requirements_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/requirements"
+                android:textAppearance="@style/edit_title"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/description_layout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/requirements_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/requirements_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/requirements_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:maxLines="10"
+                    android:scrollHorizontally="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/images_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="@string/images_add"
+                android:textAppearance="@style/edit_title"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/requirements_layout" />
+
+            <TextView
+                android:id="@+id/images_text_error"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="43dp"
+                android:text="@string/images_add_error"
+                android:textAppearance="@style/error_add_image"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/images_text"
+                app:layout_constraintTop_toBottomOf="@id/requirements_layout" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_of_images_recyclerview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="@id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/images_text" />
+
+            <ImageButton
+                android:id="@+id/add_image_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/add_image"
+                android:src="@drawable/add_circle"
+                app:layout_constraintEnd_toEndOf="@id/guideline_v2"
+                app:layout_constraintStart_toEndOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@id/list_of_images_recyclerview" />
+
+
+            <Button
+                android:id="@+id/review_house_btn"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/button_state"
+                android:text="@string/review_house"
+                android:textAppearance="@style/button_log_in"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guideline_v2"
+                app:layout_constraintStart_toStartOf="@id/guideline_v1"
+                app:layout_constraintTop_toBottomOf="@+id/add_image_btn" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_v1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_v2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
