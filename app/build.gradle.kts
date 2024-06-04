@@ -140,4 +140,16 @@ dependencies {
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("com.hbb20:ccp:2.7.3")
+    implementation("org.passay:passay:1.6.0")
+
+    // AndroidX Test library
+    implementation ("androidx.test.ext:junit:1.1.3")
+    implementation ("androidx.test.espresso:espresso-core:3.4.0")
+
+    // Mockito
+    implementation ("org.mockito:mockito-core:3.11.2")
+    implementation ("org.mockito:mockito-android:3.11.2")
+
+    // JUnit
+    implementation ("junit:junit:4.13.2")
 }

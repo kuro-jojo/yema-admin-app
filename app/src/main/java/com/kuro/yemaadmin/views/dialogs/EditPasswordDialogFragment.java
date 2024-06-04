@@ -22,6 +22,16 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.textfield.TextInputEditText;
 import com.kuro.yemaadmin.R;
 
+import org.passay.CharacterRule;
+import org.passay.EnglishCharacterData;
+import org.passay.LengthRule;
+import org.passay.PasswordData;
+import org.passay.PasswordValidator;
+import org.passay.RuleResult;
+import org.passay.WhitespaceRule;
+
+import java.util.Arrays;
+
 public class EditPasswordDialogFragment extends DialogFragment {
 
     public static final int PASSWORD_MIN_LENGTH = 6;
@@ -30,9 +40,10 @@ public class EditPasswordDialogFragment extends DialogFragment {
     private View.OnClickListener mPositiveListener;
     private View.OnClickListener mNegativeListener;
     private Button mPositiveBtn;
-    private TextView mError;
+    private TextView mError, mForce;
     private boolean noError;
     private ProgressBar mProgressBar;
+    private PasswordValidator mValidator;
 
     public EditPasswordDialogFragment(int message, int positiveBtnMessageId) {
         mMessageId = message;
@@ -64,12 +75,21 @@ public class EditPasswordDialogFragment extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mValidator = new PasswordValidator(Arrays.asList(
+                new LengthRule(PASSWORD_MIN_LENGTH, 16),
+                new CharacterRule(EnglishCharacterData.UpperCase, 1),
+                new CharacterRule(EnglishCharacterData.LowerCase, 1),
+                new CharacterRule(EnglishCharacterData.Digit, 1),
+                new CharacterRule(EnglishCharacterData.Special, 1),
+                new WhitespaceRule()
+        ));
         mPositiveBtn = view.findViewById(R.id.positive_btn);
         Button negativeBtn = view.findViewById(R.id.negative_btn);
         mPositiveBtn.setEnabled(false);
         mNewPassword = view.findViewById(R.id.new_password);
         mRepeatPassword = view.findViewById(R.id.repeat_password);
         mError = view.findViewById(R.id.invalid_password);
+        mForce = view.findViewById(R.id.invalid_password_force);
 
         mProgressBar = view.findViewById(R.id.password_progressbar);
         mProgressBar.setVisibility(View.GONE);
@@ -116,15 +136,22 @@ public class EditPasswordDialogFragment extends DialogFragment {
             @Override
             public void afterTextChanged(Editable s) {
                 mError.setVisibility(View.VISIBLE);
-                if (s.toString().isEmpty() || (other.getText() != null && !s.toString().equals(other.getText().toString()))) {
+                String password = s.toString();
+                if (password.isEmpty() || (other.getText() != null && !password.equals(other.getText().toString()))) {
                     mError.setText(requireActivity().getString(R.string.passwords_do_not_match));
                 }
-                if (other.getText() != null && s.toString().equals(other.getText().toString())) {
-                    if (s.toString().length() < PASSWORD_MIN_LENGTH) {
+                if (other.getText() != null && password.equals(other.getText().toString())) {
+                    if (password.length() < PASSWORD_MIN_LENGTH) {
                         String e = requireActivity().getString(R.string.password_must_be_at_least_6_characters_long);
                         mError.setText(String.format(e, PASSWORD_MIN_LENGTH));
                     } else {
-                        noError = true;
+                        RuleResult result = mValidator.validate(new PasswordData(password));
+                        if (!result.isValid()) {
+                            mForce.setVisibility(View.VISIBLE);
+                        } else {
+                            mForce.setVisibility(View.GONE);
+                            noError = true;
+                        }
                         mError.setVisibility(View.GONE);
                     }
                 }

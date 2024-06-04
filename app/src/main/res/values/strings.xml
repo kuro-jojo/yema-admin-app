@@ -110,5 +110,6 @@
     <string name="password_updated_successfully">Password updated successfully</string>
     <string name="error_on_server">An error occurred on the server. Please come back later or contact the administrator!!</string>
     <string name="at">at</string>
+    <string name="must_contain">Must contain : 1 Maj, 1 Min, 1 spec, 1 digit!!</string>
 
 </resources>

@@ -27,6 +27,15 @@ import com.kuro.yemaadmin.viewModels.AuthViewModel;
 import com.kuro.yemaadmin.viewModels.UserViewModel;
 import com.kuro.yemaadmin.views.MainActivity;
 
+import org.passay.CharacterRule;
+import org.passay.EnglishCharacterData;
+import org.passay.LengthRule;
+import org.passay.PasswordData;
+import org.passay.PasswordValidator;
+import org.passay.RuleResult;
+import org.passay.WhitespaceRule;
+
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class LoginFragment extends Fragment {
@@ -40,7 +49,7 @@ public class LoginFragment extends Fragment {
     private Pattern mEmailPattern;
     private AuthViewModel mAuthViewModel;
     private UserViewModel mUserViewModel;
-
+    private PasswordValidator mValidator;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +70,14 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View loginView, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(loginView, savedInstanceState);
-
+         mValidator = new PasswordValidator(Arrays.asList(
+                new LengthRule(PASSWORD_MIN_LENGTH, 16),
+                new CharacterRule(EnglishCharacterData.UpperCase, 1),
+                new CharacterRule(EnglishCharacterData.LowerCase, 1),
+                new CharacterRule(EnglishCharacterData.Digit, 1),
+                new CharacterRule(EnglishCharacterData.Special, 1),
+                new WhitespaceRule()
+        ));
         NavController navController = Navigation.findNavController(loginView);
         mFirebaseAuth = FirebaseAuth.getInstance();
         String emailRegex = "[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}$";
@@ -128,7 +144,6 @@ public class LoginFragment extends Fragment {
             public void afterTextChanged(Editable s) {
                 String email = String.valueOf(s);
                 mIsEmailValid = mEmailPattern.matcher(email).find();
-
                 mLoginBtn.setEnabled(mIsEmailValid && mIsPasswordValid);
             }
         });
@@ -149,7 +164,8 @@ public class LoginFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 String password = String.valueOf(s);
-                mIsPasswordValid = password.length() >= PASSWORD_MIN_LENGTH;
+                RuleResult result = mValidator.validate(new PasswordData(password));
+                mIsPasswordValid = result.isValid();
                 mLoginBtn.setEnabled(mIsEmailValid && mIsPasswordValid);
             }
         });
